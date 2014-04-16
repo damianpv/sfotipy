@@ -6,13 +6,14 @@
 <body>
 
     <section>
+    {{ selected_track }}
         <ul>
-            <li>
-                <a href="/">Inicio</a>
+            {% for track in tracks %}
+	    <li>
+                <a href="{{ track.get_absolute_url}}">{{ track.title }}</a>
+		{% if track.id == selected_track.id %} ---- {% endif %}
             </li>
-            <li>
-                <a href="/tracks/Happy">Happy</a>
-            </li>
+	    {% endfor %}
         </ul>
         <p>
             Title: {{ track.title }}
