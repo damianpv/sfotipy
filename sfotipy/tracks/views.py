@@ -6,6 +6,8 @@ from .models import Track
 
 def track_view(request, title):
 
+    #import ipdb; ipdb.set_trace(); # Debug de codigo
+
     '''
     try:
         track = Track.objects.get(title=title)
@@ -26,7 +28,8 @@ def track_view(request, title):
         }
     }
 
-    json_data = json.dumps(data) # diccionario de python a json
+    #json_data = json.dumps(data) # diccionario de python a json
     #json.loads(string_json) # json a diccionario de python
 
-    return HttpResponse(json_data, content_type='application/json')
+    #return HttpResponse(json_data, content_type='application/json')
+    return render(request, 'track.html', {'track': track, 'bio': bio})
