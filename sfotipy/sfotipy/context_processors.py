@@ -11,7 +11,7 @@ def basico(request):
     #import ipdb;ipdb.set_trace()
 
     for t in tracks:
-	if request.path == t.get_absolute_url():
-	    track = t
-	    break
+        if request.path == t.get_absolute_url():
+            track = t
+            break
     return {'titulo': choice(frase), 'tracks': tracks, 'selected_track':track}
