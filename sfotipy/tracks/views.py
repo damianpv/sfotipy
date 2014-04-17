@@ -1,9 +1,11 @@
 import json
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
+from django.contrib.auth.decorators import login_required
 
 from .models import Track
 
+@login_required
 def track_view(request, title):
 
     #import ipdb; ipdb.set_trace(); # Debug de codigo
