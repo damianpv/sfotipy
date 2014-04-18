@@ -52,6 +52,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'mockups',
     'django_extensions',
+    'rest_framework',
+    'django_filters'
 )
 
 MIDDLEWARE_CLASSES = (

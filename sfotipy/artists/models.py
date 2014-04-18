@@ -7,5 +7,8 @@ class Artist(models.Model):
     biography = models.TextField(blank=True)
     favorite_songs = models.ManyToManyField('tracks.Track', blank=True, related_name='is_favorite_of')
 
+    def es_pharrel(self):
+        return self.id == 1
+
     def __unicode__(self):
         return self.first_name
