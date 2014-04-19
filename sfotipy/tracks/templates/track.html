@@ -1,3 +1,4 @@
+{% load cache %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 
     <section>
     {{ selected_track }}
+
         <ul>
             {% for track in tracks %}
 	    <li>
@@ -15,9 +17,10 @@
             </li>
 	    {% endfor %}
         </ul>
+        {% cache 60 track.title %}
         <p>
-            Title:aaaaaaa {{ track.title }}
-        </p>
+            Title: {{ track.title }}
+        </p>{% endcache %}
         <p>
             Order: {{ track.order }}
         </p>

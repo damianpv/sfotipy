@@ -43,7 +43,7 @@ def track_view(request, title):
         #time.sleep(5)
         #cache.set('data_%s' % title, data)
 
-    time.sleep(5) # redis cache: test
+    #time.sleep(5) # redis cache: test
 
     #demorada.apply_async(countdown=5)
 
