@@ -57,11 +57,11 @@ INSTALLED_APPS = (
     'mockups',
     'django_extensions',
     'rest_framework',
-    #'djcelery',
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.cache.UpdateCacheMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'sfotipy.middleware.PaisMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'sfotipy.urls'
@@ -142,7 +142,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 #    'userprofiles.backends.EmailBackend',
 #)
 
-#import djcelery
-#djcelery.setup_loader()
+import djcelery
+djcelery.setup_loader()
 
-#BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = 'redis://localhost:6379/0'

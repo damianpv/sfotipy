@@ -2,14 +2,14 @@ import json
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
-#from artists.tasks import demorada
+from artists.tasks import demorada
 from .models import Track
 
 import time # redis cache: test
 
-from django.views.decorators.cache import cache_page
+#from django.views.decorators.cache import cache_page
 # redis cache
-from django.core.cache import cache
+#from django.core.cache import cache
 
 #@cache_page(60)
 @login_required
@@ -43,9 +43,9 @@ def track_view(request, title):
         #time.sleep(5)
         #cache.set('data_%s' % title, data)
 
-    time.sleep(5) # redis cache: test
+    #time.sleep(5) # redis cache: test
 
-    #demorada.apply_async(countdown=5)
+    demorada.apply_async(countdown=5)
 
     #json_data = json.dumps(data) # diccionario de python a json
     #json.loads(string_json) # json a diccionario de python
