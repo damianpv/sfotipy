@@ -11,7 +11,7 @@ from django.views.decorators.cache import cache_page
 # redis cache
 from django.core.cache import cache
 
-@cache_page(60 * 15)
+#@cache_page(60)
 @login_required
 def track_view(request, title):
 
@@ -43,7 +43,7 @@ def track_view(request, title):
         #time.sleep(5)
         #cache.set('data_%s' % title, data)
 
-    #time.sleep(5) # redis cache: test
+    time.sleep(5) # redis cache: test
 
     #demorada.apply_async(countdown=5)
 
