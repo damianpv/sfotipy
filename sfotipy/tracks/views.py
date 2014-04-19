@@ -7,9 +7,11 @@ from .models import Track
 
 import time # redis cache: test
 
+from django.views.decorators.cache import cache_page
 # redis cache
 from django.core.cache import cache
 
+@cache_page(60 * 15)
 @login_required
 def track_view(request, title):
 
@@ -26,22 +28,22 @@ def track_view(request, title):
     bio = track.artist.biography
 
     # redis cache : low level
-    data = cache.get('data_%s' % title)
-    if data is None:
+    #data = cache.get('data_%s' % title)
+    #if data is None:
 
-        data = {
-            'title': track.title,
-            'order': track.order,
-            'album': track.album.title,
-            'artist': {
-                'name': track.artist.first_name,
-                'bio': bio,
-            }
+    data = {
+        'title': track.title,
+        'order': track.order,
+        'album': track.album.title,
+        'artist': {
+            'name': track.artist.first_name,
+            'bio': bio,
         }
-        time.sleep(5)
-        cache.set('data_%s' % title, data)
+    }
+        #time.sleep(5)
+        #cache.set('data_%s' % title, data)
 
-    #time.sleep(5) # redis cache: test
+    time.sleep(5) # redis cache: test
 
     #demorada.apply_async(countdown=5)
 
