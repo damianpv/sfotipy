@@ -22,7 +22,7 @@ from .serializers import ArtistSerializer
 class ArtistViewSet(viewsets.ModelViewSet):
     model = Artist
     serializer_class = ArtistSerializer
-    filter_fields = ('first_name', )
+    filter_fields = ('id', 'first_name','last_name', )
     paginate_by = 1
 
 

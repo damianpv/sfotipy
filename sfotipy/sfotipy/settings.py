@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '7uv7s&&#!3!k0ly@j2xe4g8(-!)*0mo-up9ftmh_y-epwgg68o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -57,9 +57,11 @@ INSTALLED_APPS = (
     'mockups',
     'django_extensions',
     'rest_framework',
+    #'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,19 +109,38 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+# redis
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'localhost:6379',
+        'OPTIONS': {
+            'DB': 1,
+            # 'PASSWORD': 'yadayada',
+            'PARSER_CLASS': 'redis.connection.HiredisParser'    # hace que sea mas rapido en produccion
+        }
+    }
+}
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])
 MEDIA_URL = '/media/'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = ''
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# AWS_STORAGE_BUCKET_NAME = ''
 
 # Backends
 #AUTHENTICATION_BACKENDS = (
 #    'userprofiles.backends.EmailBackend',
 #)
+
+#import djcelery
+#djcelery.setup_loader()
+
+#BROKER_URL = 'redis://localhost:6379/0'
