@@ -8,10 +8,8 @@ from .models import Artist
 # detalle de un artista
 class ArtistDetailView(DetailView):
     model = Artist
-    context_object_name = 'artist'
-
-    def get_template_names(self):
-	return 'artist.html'
+    context_object_name = 'fav_artist'
+    template_name = 'artists.html'
 
 class ArtistListView(ListView):
     model = Artist
@@ -24,7 +22,7 @@ from .serializers import ArtistSerializer
 class ArtistViewSet(viewsets.ModelViewSet):
     model = Artist
     serializer_class = ArtistSerializer
-    filter_fields = ('id', )
+    filter_fields = ('first_name', )
     paginate_by = 1
 
 

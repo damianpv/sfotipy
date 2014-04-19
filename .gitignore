@@ -54,3 +54,6 @@ docs/_build/
 .idea/
 media/
 *.sqlite3
+
+sfotipy/static/
+sfotipy/content/
