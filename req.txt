@@ -26,6 +26,7 @@ kombu==3.0.15
 pytz==2014.2
 redis==2.9.1
 six==1.6.1
+sorl-thumbnail==11.12
 sqlparse==0.1.11
 tablib==0.9.11
 wsgiref==0.1.2
