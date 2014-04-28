@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '7uv7s&&#!3!k0ly@j2xe4g8(-!)*0mo-up9ftmh_y-epwgg68o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -53,12 +53,14 @@ INSTALLED_APPS = (
     'artists',
     'albums',
     'tracks',
-    'debug_toolbar',
-    'mockups',
-    'django_extensions',
+    #'debug_toolbar',
+    #'mockups',
+    #'django_extensions',
     'rest_framework',
     #'djcelery',
     'sorl.thumbnail',
+    #'storages',
+    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -132,11 +134,11 @@ STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['conte
 MEDIA_URL = '/media/'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
-# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# AWS_STORAGE_BUCKET_NAME = ''
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = ''
 
 # Backends
 #AUTHENTICATION_BACKENDS = (
