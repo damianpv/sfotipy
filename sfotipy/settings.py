@@ -59,8 +59,8 @@ INSTALLED_APPS = (
     'rest_framework',
     #'djcelery',
     'sorl.thumbnail',
-    'storages',
-    'gunicorn',
+    #'storages',
+    #'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,11 +134,11 @@ STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['conte
 MEDIA_URL = '/media/'
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = 'AKIAJBG72CPNAYX3YFLA'
-AWS_SECRET_ACCESS_KEY = '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'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'nameappheroku'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#AWS_ACCESS_KEY_ID = ''
+#AWS_SECRET_ACCESS_KEY = ''
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#AWS_STORAGE_BUCKET_NAME = ''
 
 # Backends
 #AUTHENTICATION_BACKENDS = (
